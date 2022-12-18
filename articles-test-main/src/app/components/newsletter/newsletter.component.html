@@ -1,0 +1,63 @@
+<div class="register-form">
+  <form class="row g-3" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="col-md-6">
+      <label for="firstname" class="form-label">Nombre</label>
+      <input
+        type="text"
+        class="form-control"
+        id="firstname"
+        formControlName="firstname"
+        [ngClass]="{ 'is-invalid': submitted && f['firstname'].errors }"
+      />
+      <div *ngIf="submitted && f['firstname'].errors" class="invalid-feedback">
+        <div *ngIf="f['firstname'].errors['required']">Nombre es requerido</div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label for="lastname" class="form-label">Apellido</label>
+      <input
+        type="text"
+        class="form-control"
+        id="lastname"
+        formControlName="lastname"
+        [ngClass]="{ 'is-invalid': submitted && f['lastname'].errors }"
+      />
+      <div *ngIf="submitted && f['lastname'].errors" class="invalid-feedback">
+        <div *ngIf="f['lastname'].errors['required']">
+          Apellido es requerido
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label for="mail" class="form-label">Mail</label>
+      <input
+        type="email"
+        class="form-control"
+        id="mail"
+        formControlName="email"
+        [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+      />
+      <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+        <div *ngIf="f['email'].errors['required']">Mail es requerido</div>
+        <div *ngIf="f['email'].errors['email']">Mail es invalido</div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label for="phone" class="form-label">Teléfono</label>
+      <input
+        type="text"
+        class="form-control"
+        id="phone"
+        formControlName="phone"
+        [ngClass]="{ 'is-invalid': submitted && f['phone'].errors }"
+      />
+      <div *ngIf="submitted && f['phone'].errors" class="invalid-feedback">
+        <div *ngIf="f['phone'].errors['required']">Teléfono es requerido</div>
+        <div *ngIf="f['phone'].errors['pattern']">Teléfono es invalido</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Register</button>
+    </div>
+  </form>
+</div>
